@@ -1,0 +1,6 @@
+.modal {
+  position: fixed;
+  z-index: 500;
+  top: 30%;
+  transition: all 0.3s ease-out;
+}
