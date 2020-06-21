@@ -13,7 +13,7 @@ const ProfileUpdate = ({ match }) => {
     success: false,
   });
 
-  const { token } = isAuthenticated();
+  const { user, token } = isAuthenticated();
   const { name, email, password, loading, error, success } = values;
 
   const init = (userId) => {
@@ -75,7 +75,7 @@ const ProfileUpdate = ({ match }) => {
 
   const redirectUser = (success) => {
     if (success) {
-      return <Redirect to='/user/dashboard' />;
+      return <Redirect to={`/user/dashboard/${user._id}`} />;
     }
   };
 

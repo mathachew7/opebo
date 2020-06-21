@@ -46,20 +46,20 @@ const Address = [
 
 const CheckoutAddress = () => {
   const [items, setItems] = useState([]);
-  const [Address, setAddress] = useState([]);
+  //const [Address, setAddress] = useState([]);
   const [selected, setSelected] = useState({});
   const [finalAddress, setFinalAddress] = useState({});
   const {
     user: { _id, name, email, role },
   } = isAuthenticated();
   const token = isAuthenticated().token;
-  const init = (userId, token) => {
-    getUserAddress(userId, token).then((data) => {
-      setAddress(data);
-    });
-  };
+  // const init = (userId, token) => {
+  //   getUserAddress(userId, token).then((data) => {
+  //     setAddress(data.address);
+  //   });
+  // };
   useEffect(() => {
-    init(_id, token);
+    //init(_id, token);
     setItems(getCart());
   }, [_id, token]);
 

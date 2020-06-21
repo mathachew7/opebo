@@ -19,7 +19,8 @@ router.post(
   addOrderToUserHistory
 );
 
-router.get("/order/list/:userId", requireSignin, isAuth, isAdmin, listOrders);
+router.get("/admin/order/list/:adminId", requireSignin, listOrders);
+
 router.get(
   "/order/status-values/:userId",
   requireSignin,

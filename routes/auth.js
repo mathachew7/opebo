@@ -17,6 +17,7 @@ const {
 const {
   SignupValidator,
   phoneValidator,
+  AdminSignupValidator,
   vendorSignUpValidator,
 } = require("../validation");
 
@@ -33,7 +34,7 @@ router.post("/vendorSignup", vendorSignUpValidator, vendorSignup);
 
 //admin path for signin and signup
 router.post("/adminSignIn", adminSignIn);
-router.post("/adminSignup", SignupValidator, adminSignup);
+router.post("/adminSignup", AdminSignupValidator, adminSignup);
 
 //signOut for everyone
 router.get("/signout", signout);

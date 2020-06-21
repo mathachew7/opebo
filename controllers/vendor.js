@@ -57,7 +57,6 @@ exports.addVendorAddress = (req, res, next) => {
           error: "Could not update vendor address",
         });
       }
-      next();
     }
   );
   address.save((err, data) => {
@@ -90,6 +89,33 @@ exports.vendorsByServiceArea = (req, res) => {
     }
     res.json(vendors);
   });
+};
+
+exports.vendorsByService = (req, res) => {
+  Vendor.find({ service: req.body.service }).exec((err, vendors) => {
+    if (err || !vendors) {
+      return res.status(400).json({
+        error: errorHandler(err),
+      });
+    }
+    res.json(vendors);
+  });
+};
+
+//sorting vendors by service area and service name
+exports.vendorsList = (req, res) => {
+  let limit = req.query.limit ? parseInt(req.query.limit) : 6;
+
+  Vendor.find({ service: req.body.service, service_area: req.body.serviceArea })
+    .limit(limit)
+    .exec((err, vendors) => {
+      if (err) {
+        return res.status(400).json({
+          error: "Services not found",
+        });
+      }
+      res.json(vendors);
+    });
 };
 
 exports.vendorUpdateDocument = (req, res) => {
@@ -129,5 +155,17 @@ exports.vendorUpdateDocument = (req, res) => {
       }
       res.json(result);
     });
+  });
+};
+
+exports.addressByVendorId = (req, res) => {
+  VendorAddress.find({ vendor: req.profile._id }).exec((err, address) => {
+    console.log(address);
+    if (err || !address) {
+      return res.status(400).json({
+        error: errorHandler(err),
+      });
+    }
+    res.json({ address });
   });
 };

@@ -1,26 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { isAuthenticated } from "../auth";
-import { Link, withRouter } from "react-router-dom";
-import { getPurchaseHistory } from "./apiUser";
-//import moment from "moment";
-import Footer from "../modules/components/Footer";
-import UserNavbar from "./UserNavbar";
-import Spinner from "../core/components/Spinner";
-const CartCard2 = React.lazy(() => import("../core/components/Cart/CartCard2"));
+import Layout from "../core/Layout";
+import { isAuthenticated } from "./adminAuth";
+import { Link } from "react-router-dom";
+import { getUsersOrders } from "./apiAdmin";
+import AdminNavbar from "./AdminNavbar";
 
-const UserBookings = ({ history }) => {
+import Spinner from "../core/components/Spinner";
+
+const ViewOrders = ({ history }) => {
   const [bookingHistory, setBookingHistory] = useState([]);
   const [fetched, setFetched] = useState(false);
-  const [cardFetched, setCardFetched] = useState(false);
 
-  const {
-    user: { _id, name, email, role },
-  } = isAuthenticated();
-  const token = isAuthenticated().token;
+  const { admin, token } = isAuthenticated();
 
-  const init = (userId, token) => {
+  const init = (adminId, token) => {
     setFetched(false);
-    getPurchaseHistory(userId, token).then((data) => {
+    getUsersOrders(adminId, token).then((data) => {
       if (data.error) {
         console.log(data.error);
       } else {
@@ -31,9 +26,9 @@ const UserBookings = ({ history }) => {
   };
 
   useEffect(() => {
-    init(_id, token);
-  }, [_id, token]);
-
+    init(admin._id, token);
+  }, [admin._id, token]);
+  console.log(bookingHistory);
   const breadLinks = () => {
     return (
       <div className='flex flex-row mb-2'>
@@ -56,7 +51,6 @@ const UserBookings = ({ history }) => {
         >
           <p className='text-xs'>BOOKING ID #{booking._id}</p>
           <p className='text-xs'>TOTAL : &#8377; {booking.amount}</p>
-          <p className='text-xs'>Booking for: {booking.user.name}</p>
         </div>
         <div className='px-3 py-2'>
           {booking.orders.map((order, index) => (
@@ -71,11 +65,10 @@ const UserBookings = ({ history }) => {
         </div>
       </div>
     ));
-
   const bookingsInfo = (bookings) => {
     return (
       <>
-        {UserNavbar(history)}
+        {AdminNavbar(history)}
         <div className='justify-center items-center md:px-40 mb-10'>
           <div className='bg-white flex flex-col rounded overflow-hidden px-3 -pt-16'>
             {breadLinks()}
@@ -87,13 +80,8 @@ const UserBookings = ({ history }) => {
       </>
     );
   };
-  return (
-    <>
-      {bookingsInfo(bookingHistory)}
 
-      <Footer />
-    </>
-  );
+  return <>{bookingsInfo(bookingHistory)}</>;
 };
 
-export default withRouter(UserBookings);
+export default ViewOrders;

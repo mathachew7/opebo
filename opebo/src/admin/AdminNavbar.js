@@ -23,12 +23,20 @@ const links = [
     title: `Create Sub-Service`,
   },
   {
-    route: `/view-Orders`,
+    route: `/admin/viewOrders`,
     title: `View Orders`,
   },
   {
-    route: `/manage-services`,
+    route: `/admin/categories`,
+    title: `Manage Categories`,
+  },
+  {
+    route: `/admin/services`,
     title: `Manage Services`,
+  },
+  {
+    route: `/admin/subServices`,
+    title: `Manage Sub-Services`,
   },
   {
     route: `/vendors`,

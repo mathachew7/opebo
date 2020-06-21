@@ -107,6 +107,7 @@ const ManageSubServices = React.lazy(() =>
   import("../admin/ManageSubServices")
 );
 const UpdateSubService = React.lazy(() => import("../admin/UpdateSubService"));
+const ViewOrders = React.lazy(() => import("../admin/ViewOrders"));
 
 // Other components----------------------------------
 // const Error = React.lazy(() => import("../pages/ErrorPage"));
@@ -230,6 +231,7 @@ function Routes() {
               exact
               component={UpdateSubService}
             />
+            <AdminRoute path='/admin/viewOrders' exact component={ViewOrders} />
 
             {/* Other component */}
           </Suspense>

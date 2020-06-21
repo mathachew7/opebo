@@ -9,6 +9,9 @@ const {
   update,
   addVendorAddress,
   vendorUpdateDocument,
+  addressByVendorId,
+  vendorsByService,
+  vendorsList,
 } = require("../controllers/vendor");
 
 router.get("/secret/:vendorId", requireSignin, isAuth, isAdmin, (req, res) => {
@@ -32,6 +35,10 @@ router.put(
   vendorUpdateDocument
 );
 
+router.get("/vendorsList", vendorsList);
+
+router.get("/vendorsByService", vendorsByService);
+router.get("/vendorAddress/:vendorId", addressByVendorId);
 router.param("venodrId", vendorById);
 
 module.exports = router;

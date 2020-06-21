@@ -276,19 +276,19 @@ export const getSubServiceByServiceId = (serviceId) => {
 };
 //<<-- all the order related apis are here -->>
 //api for listing all the orders
-export const listOrders = (userId, token) => {
-  return fetch(`${API}/order/list/${userId}`, {
-    method: "GET",
-    headers: {
-      Accept: "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  })
-    .then((response) => {
-      return response.json();
-    })
-    .catch((err) => console.log(err));
-};
+// export const listOrders = (userId, token) => {
+//   return fetch(`${API}/order/list/${userId}`, {
+//     method: "GET",
+//     headers: {
+//       Accept: "application/json",
+//       Authorization: `Bearer ${token}`,
+//     },
+//   })
+//     .then((response) => {
+//       return response.json();
+//     })
+//     .catch((err) => console.log(err));
+// };
 
 //api to get status values as per changes in front-end
 export const getStatusValues = (userId, token) => {
@@ -315,6 +315,21 @@ export const updateOrderStatus = (userId, token, orderId, status) => {
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ status, orderId }),
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};
+
+export const getUsersOrders = (adminId, token) => {
+  return fetch(`${API}/admin/order/list/${adminId}`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
   })
     .then((response) => {
       return response.json();
