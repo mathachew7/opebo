@@ -150,7 +150,6 @@ const ProfileUpdate = ({ match }) => {
 
   return (
     <>
-      iv>
       {showLoading()}
       {showError()}
       {updateProfile(name, email, password)}

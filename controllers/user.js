@@ -122,7 +122,6 @@ exports.addUserAddress = (req, res, next) => {
 
 exports.addressByUserId = (req, res) => {
   UserAddress.find({ user: req.profile._id }).exec((err, address) => {
-    console.log(address);
     if (err || !address) {
       return res.status(400).json({
         error: errorHandler(err),

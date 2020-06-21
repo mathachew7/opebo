@@ -50,14 +50,10 @@ const UserDashboard = ({ history }) => {
 
     {
       route: `/user/bookings/${_id}`,
-      title: `Bookings`,
+      title: `My Bookings`,
     },
     {
-      route: `/transactions`,
-      title: `Transactions`,
-    },
-    {
-      route: `/myLocations`,
+      route: `/user/locations/${_id}`,
       title: `My Locations`,
     },
     {

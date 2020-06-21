@@ -65,6 +65,7 @@ const Signup = React.lazy(() => import("../user/Signup"));
 const Signin = React.lazy(() => import("../user/Signin"));
 const UserDashboard = React.lazy(() => import("../user/UserDashboard"));
 const UserBookings = React.lazy(() => import("../user/UserBookings"));
+const UserLocations = React.lazy(() => import("../user/userLocations"));
 const ProfileUpdate = React.lazy(() => import("../user/ProfileUpdate"));
 const SigninPhone = React.lazy(() => import("../user/SigninPhone"));
 const OtpPhone = React.lazy(() => import("../user/optPage"));
@@ -178,6 +179,11 @@ function Routes() {
               path='/user/bookings/:userId'
               exact
               component={UserBookings}
+            />
+            <PrivateRoute
+              path='/user/locations/:userId'
+              exact
+              component={UserLocations}
             />
             <PrivateRoute
               path='/profileupdate/:userId'

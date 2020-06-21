@@ -14,52 +14,52 @@ import { FaRegCircle, FaCheckCircle } from "react-icons/fa";
 
 const cartImage = require("../assets/images/cart.png");
 
-const Address = [
-  {
-    id: 1001,
-    name: "Johnbas",
-    phone: "9953366748",
-    pin: "795001",
-    address: "Keishmpat Leimajam Leikai, near IRYC",
-    area: "Imphal",
-    type: "Home",
-  },
-  {
-    id: 1002,
-    name: "John",
-    phone: "9953366748",
-    pin: "201310",
-    address: "1402, Tower-1, Whitehouse Apartments",
-    locality: "Greater Noida",
-    type: "Work",
-  },
-  {
-    id: 1003,
-    name: "Yaiphabi Chanam",
-    phone: "8131804259",
-    pin: "795001",
-    address: "Uripok Achom Leikai, opp. Royal Bank of Manipur",
-    locality: "Imphal",
-    type: "Home",
-  },
-];
+// const Address = [
+//   {
+//     id: 1001,
+//     name: "Johnbas",
+//     phone: "9953366748",
+//     pin: "795001",
+//     address: "Keishmpat Leimajam Leikai, near IRYC",
+//     area: "Imphal",
+//     type: "Home",
+//   },
+//   {
+//     id: 1002,
+//     name: "John",
+//     phone: "9953366748",
+//     pin: "201310",
+//     address: "1402, Tower-1, Whitehouse Apartments",
+//     locality: "Greater Noida",
+//     type: "Work",
+//   },
+//   {
+//     id: 1003,
+//     name: "Yaiphabi Chanam",
+//     phone: "8131804259",
+//     pin: "795001",
+//     address: "Uripok Achom Leikai, opp. Royal Bank of Manipur",
+//     locality: "Imphal",
+//     type: "Home",
+//   },
+// ];
 
 const CheckoutAddress = () => {
   const [items, setItems] = useState([]);
-  //const [Address, setAddress] = useState([]);
+  const [Address, setAddress] = useState([]);
   const [selected, setSelected] = useState({});
   const [finalAddress, setFinalAddress] = useState({});
   const {
     user: { _id, name, email, role },
   } = isAuthenticated();
   const token = isAuthenticated().token;
-  // const init = (userId, token) => {
-  //   getUserAddress(userId, token).then((data) => {
-  //     setAddress(data.address);
-  //   });
-  // };
+  const init = (userId, token) => {
+    getUserAddress(userId, token).then((data) => {
+      setAddress(data.address);
+    });
+  };
   useEffect(() => {
-    //init(_id, token);
+    init(_id, token);
     setItems(getCart());
   }, [_id, token]);
 
@@ -163,7 +163,7 @@ const CheckoutAddress = () => {
 
   return (
     <>
-      {Address.length > 0 ? (
+      {Address.length >= 0 ? (
         <>
           <Navbar />
           <div className='flex flex-col md:flex-row antialiased'>
