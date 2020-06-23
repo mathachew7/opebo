@@ -3,6 +3,8 @@ import { isAuthenticated, signout } from "../auth";
 import { Link, withRouter } from "react-router-dom";
 import { getPurchaseHistory } from "./apiUser";
 
+const profileImage = require("../assets/images/avatar.jpg");
+
 const isActive = (history, path) => {
   if (history.location.pathname === path) {
     return {
@@ -77,7 +79,7 @@ const UserNavbar = ({ history }) => {
 
   const dropMenu = (history) => {
     return (
-      <div className='rounded shadow-md bg-white absolute pin-t mt-2 -ml-16'>
+      <div className='rounded shadow-md bg-white absolute pin-t mt-1 -ml-10'>
         <ul className='list-reset'>
           <li>
             <Link
@@ -135,7 +137,7 @@ const UserNavbar = ({ history }) => {
     );
   };
 
-  const mainNavbar = (history) => {
+  const mainNavbar = (history, name) => {
     return (
       <>
         <header className='antialiased bg-gray-200 pb-2 font-sans'>
@@ -148,10 +150,11 @@ const UserNavbar = ({ history }) => {
               </button>
               <div className='z-10'>
                 <button onClick={() => toggleProfileDropdown(!profileDropdown)}>
+                  <span className='text-xs px-3 items-baseline'>{name}</span>
                   <img
                     className='inline-block h-8 w-8 rounded-full'
-                    src='https://avatars0.githubusercontent.com/u/4323180?s=460&v=4'
-                    alt=''
+                    src={profileImage}
+                    alt='profile'
                   />
                 </button>
                 <div className={`${profileDropdown ? `block` : `hidden`}`}>
@@ -166,7 +169,7 @@ const UserNavbar = ({ history }) => {
     );
   };
 
-  return <>{mainNavbar(history)}</>;
+  return <>{mainNavbar(history, name)}</>;
 };
 
 export default withRouter(UserNavbar);

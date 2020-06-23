@@ -5,6 +5,7 @@ import { addUserAddress } from "../../../user/apiUser";
 
 import Modal from "../Modal/AddressModal";
 import { FaTimes } from "react-icons/fa";
+import Toast from "light-toast";
 
 const AddAddress = (props) => {
   const [toggleModal, setToggleModal] = useState(false);
@@ -19,7 +20,7 @@ const AddAddress = (props) => {
     type: "",
     pin: "",
     street: "",
-    town: "",
+    city: "",
     state: "",
     loading: false,
     error: "",
@@ -33,7 +34,7 @@ const AddAddress = (props) => {
     type,
     pin,
     street,
-    town,
+    city,
     state,
     loading,
     error,
@@ -57,11 +58,15 @@ const AddAddress = (props) => {
           type: "",
           pin: "",
           street: "",
-          town: "",
+          city: "",
           state: "",
           loading: false,
         });
       }
+      window.location.reload();
+      Toast.success("New address added!", 1000, () => {
+        // do something after the toast disappears
+      });
     });
   };
 
@@ -188,6 +193,7 @@ const AddAddress = (props) => {
             <button
               className='group relative w-full flex justify-center py-3 border border-transparent text-sm rounded text-white bg-red-500 hover:border-gray-800 focus:outline-none focus:border-gray-800 focus:shadow-outline-gray active:bg-green-600 transition duration-550 ease-in-out uppercase font-semibold'
               type='submit'
+              onClick={modalHandler}
             >
               <span className='absolute left-0 inset-y pl-3'></span>
               Add this address

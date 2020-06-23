@@ -67,6 +67,7 @@ const CheckoutAddress = () => {
     setSelected(key);
     setFinalAddress(address);
   };
+
   const notSelectedAddress = (i, address) => {
     return (
       <button
@@ -80,16 +81,20 @@ const CheckoutAddress = () => {
           </div>
           <div className='flex flex-col justify-start text-left'>
             <h1 className='font-semibold text-base text-black'>
-              {address.name}
+              {address.full_name}
               <span className='ml-3 px-2 rounded-full text-xs text-green-600 border-2 border-green-600 uppercase font-medium'>
                 {address.type}
               </span>
             </h1>
             <p className='text-xs text-gray-600'>
-              {address.address} - {address.pin}
+              {address.street}
+              <br />
+              {address.city}
+              <br />
+              {address.pin}
             </p>
             <p className='text-sm'>
-              Mobile: <strong>{address.phone}</strong>
+              Mobile: <strong>{address.mobile}</strong>
             </p>
           </div>
         </div>
@@ -110,16 +115,20 @@ const CheckoutAddress = () => {
           </div>
           <div className='flex flex-col justify-start text-left'>
             <h1 className='font-semibold text-base text-black'>
-              {address.name}
+              {address.full_name}
               <span className='ml-3 px-2 rounded-full text-xs text-green-600 border-2 border-green-600 uppercase font-medium'>
                 {address.type}
               </span>
             </h1>
             <p className='text-xs text-gray-600'>
-              {address.address} - {address.pin}
+              {address.street}
+              <br />
+              {address.city}
+              <br />
+              {address.pin}
             </p>
             <p className='text-sm'>
-              Mobile: <strong>{address.phone}</strong>
+              Mobile: <strong>{address.mobile}</strong>
             </p>
           </div>
         </div>
@@ -163,35 +172,36 @@ const CheckoutAddress = () => {
 
   return (
     <>
-      {Address.length >= 0 ? (
-        <>
-          <Navbar />
-          <div className='flex flex-col md:flex-row antialiased'>
-            <div className='md:px-10 md:w-2/3 md:border-r border-gray-400'>
-              <div className='py-2 pt-5 px-5 flex flex-row justify-between items-center'>
-                <h1 className='text-md text-gray-600 font-semibold'>
-                  Select your Address
-                </h1>
-                {/* <button className='px-3 py-1 text-xs font-semibold uppercase border-2 border-gray-900 rounded text-gray-900 hover:bg-gray-900 hover:text-gray-100'>
+      <>
+        <Navbar />
+        <div className='flex flex-col md:flex-row antialiased'>
+          <div className='md:px-10 md:w-2/3 md:border-r border-gray-400'>
+            <div className='py-2 pt-5 px-5 flex flex-row justify-between items-center'>
+              <h1 className='text-md text-gray-600 font-semibold'>
+                Select your Address
+              </h1>
+              {/* <button className='px-3 py-1 text-xs font-semibold uppercase border-2 border-gray-900 rounded text-gray-900 hover:bg-gray-900 hover:text-gray-100'>
                   Add new address
                 </button> */}
-                {AddAddress()}
-              </div>
+              {AddAddress()}
+            </div>
+            {Address.length >= 0 ? (
               <div className='flex flex-col items-center md:items-start '>
                 {showItems(Address)}
               </div>
-            </div>
-            <CheckOutAddr subServices={items} finalAddress={finalAddress} />
+            ) : (
+              // <div className='flex flex-col justify-center items-center'>
+              //   {noItemsMessage()}
+              // </div>
+              <p>No address found</p>
+            )}
           </div>
-          <AppFeature />
-          <NewFeature />
-          <Footer />
-        </>
-      ) : (
-        <div className='flex flex-col justify-center items-center'>
-          {noItemsMessage()}
+          <CheckOutAddr subServices={items} finalAddress={finalAddress} />
         </div>
-      )}
+        <AppFeature />
+        <NewFeature />
+        <Footer />
+      </>
     </>
   );
 };
