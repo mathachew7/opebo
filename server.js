@@ -17,7 +17,6 @@ const orderRoutes = require("./routes/order");
 const subscribeUsRoutes = require("./routes/subscribeUs");
 const contactUsRoutes = require("./routes/contactUs");
 const paymentRoutes = require("./routes/razorpay");
-const router = require("express").Router();
 
 const path = require("path");
 //app
@@ -29,11 +28,15 @@ const port = process.env.PORT || 8000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-});
+mongoose
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
+  .then(() => {
+    console.log("database connected successfully!");
+  });
 
 // middlewares
 app.use(morgan("dev"));

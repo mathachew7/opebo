@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { isAuthenticated } from "./adminAuth";
+import { isAuthenticated, signout } from "./adminAuth";
 import { Link, withRouter } from "react-router-dom";
 
 const logo = require("../assets/images/logo-w.png");
@@ -47,7 +47,7 @@ const links = [
     title: `Payments`,
   },
   {
-    route: `/messages`,
+    route: `/contact/messages`,
     title: `Messages`,
   },
 ];
@@ -111,6 +111,11 @@ const AdminNavbar = ({ history }) => {
           <li>
             <Link
               to='/'
+              onClick={() =>
+                signout(() => {
+                  history.push("/");
+                })
+              }
               className='no-underline px-4 py-2 block text-red-500 font-bold hover:text-orange-500 hover:bg-grey-300'
             >
               Logout

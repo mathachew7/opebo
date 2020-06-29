@@ -6,7 +6,7 @@
     "JWT_SECRET": "thisisopebosecretkey",
     "SENDGRID_API_KEY": "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",
     "NODE_ENV": "development",
-    "MAIL_USERNAME": "no-reply@opeboindustries.com",
-    "MAIL_PASSWORD": "Shinjani@7"
+
+    "MAIL_PASSWORD": "OpeBo1234@"
   }
 }

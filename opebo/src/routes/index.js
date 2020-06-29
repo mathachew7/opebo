@@ -109,6 +109,7 @@ const ManageSubServices = React.lazy(() =>
 );
 const UpdateSubService = React.lazy(() => import("../admin/UpdateSubService"));
 const ViewOrders = React.lazy(() => import("../admin/ViewOrders"));
+const ContactMessage = React.lazy(() => import("../admin/ContactMessage"));
 
 // Other components----------------------------------
 // const Error = React.lazy(() => import("../pages/ErrorPage"));
@@ -238,6 +239,12 @@ function Routes() {
               component={UpdateSubService}
             />
             <AdminRoute path='/admin/viewOrders' exact component={ViewOrders} />
+
+            <AdminRoute
+              path='/contact/messages'
+              exact
+              component={ContactMessage}
+            />
 
             {/* Other component */}
           </Suspense>

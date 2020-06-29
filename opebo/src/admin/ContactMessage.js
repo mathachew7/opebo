@@ -2,24 +2,25 @@ import React, { useState, useEffect } from "react";
 import Layout from "../core/Layout";
 import { isAuthenticated } from "./adminAuth";
 import { Link } from "react-router-dom";
-import { getUsersOrders } from "./apiAdmin";
+import { getContactMessage } from "./apiAdmin";
 import AdminNavbar from "./AdminNavbar";
 
 import Spinner from "../core/components/Spinner";
 
-const ViewOrders = ({ history }) => {
-  const [bookingHistory, setBookingHistory] = useState([]);
+const ContactMessage = ({ history }) => {
+  const [messageHistory, setMessageHistory] = useState([]);
+
   const [fetched, setFetched] = useState(false);
 
   const { admin, token } = isAuthenticated();
 
   const init = (adminId, token) => {
     setFetched(false);
-    getUsersOrders(adminId, token).then((data) => {
+    getContactMessage(adminId, token).then((data) => {
       if (data.error) {
         console.log(data.error);
       } else {
-        setBookingHistory(data);
+        setMessageHistory(data);
         setFetched(true);
       }
     });
@@ -36,36 +37,31 @@ const ViewOrders = ({ history }) => {
           Your account >{" "}
         </Link>
         <Link className='ml-2 text-xs text-orange-600 hover:text-orange-500'>
-          Your bookings
+          Your messages
         </Link>
       </div>
     );
   };
 
-  const bookingsCard = (bookingsData) =>
-    bookingsData.map((booking, i) => (
+  const messagesCard = (messagesData) =>
+    messagesData.map((messages, i) => (
       <div className='mt-2 w-full border border-gray-300 rounded overflow-hidden hover:border-orange-500'>
         <div
           className='bg-gray-300 font-semibold border-b border-gray-400
          flex flex-row justify-between uppercase items-baseline px-3 pt-2'
         >
-          <p className='text-xs'>BOOKING ID #{booking._id}</p>
-          <p className='text-xs'>TOTAL : &#8377; {booking.amount}</p>
+          <p className='text-xs'>message #{messages._id}</p>
+          <p className='text-xs'>date :{messages.createdAt}</p>
         </div>
         <div className='px-3 py-2'>
-          {booking.orders.map((order, index) => (
-            <div>{order.name}</div>
-          ))}
-
-          {/* <div>
-                Address:
-                <p>{booking.address.address}</p>
-                <p>{booking.address.pin}</p>
-              </div> */}
+          <div>Name: {messages.name}</div>
+          <div>Email: {messages.email}</div>
+          <div>Phone: {messages.phone}</div>
+          <div>Message: {messages.message}</div>
         </div>
       </div>
     ));
-  const bookingsInfo = (bookings) => {
+  const messageInfo = (messages) => {
     return (
       <>
         {AdminNavbar(history)}
@@ -73,15 +69,17 @@ const ViewOrders = ({ history }) => {
           <div className='bg-white flex flex-col rounded overflow-hidden px-3 -pt-16'>
             {breadLinks()}
 
-            <h1 className='text-2xl text-left font-semibold'>Your Bookings</h1>
-            {fetched ? bookingsCard(bookings) : <Spinner />}
+            <h1 className='text-2xl text-left font-semibold'>
+              Contact Us page Messages
+            </h1>
+            {fetched ? messagesCard(messages) : <Spinner />}
           </div>
         </div>
       </>
     );
   };
 
-  return <>{bookingsInfo(bookingHistory)}</>;
+  return <>{messageInfo(messageHistory)}</>;
 };
 
-export default ViewOrders;
+export default ContactMessage;

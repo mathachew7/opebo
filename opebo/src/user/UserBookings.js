@@ -84,12 +84,6 @@ const UserBookings = ({ history }) => {
               <p className='text-base font-semibold'>Price: {order.price}</p>
             </div>
           ))}
-
-          {/* <div>
-                Address:
-                <p>{booking.address.address}</p>
-                <p>{booking.address.pin}</p>
-              </div> */}
         </div>
       </div>
     ));

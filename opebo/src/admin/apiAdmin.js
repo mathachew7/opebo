@@ -336,3 +336,18 @@ export const getUsersOrders = (adminId, token) => {
     })
     .catch((err) => console.log(err));
 };
+
+export const getContactMessage = (adminId, token) => {
+  return fetch(`${API}/listContactMessage/${adminId}`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};
