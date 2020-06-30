@@ -4,7 +4,7 @@ require("dotenv").config();
 
 exports.orderById = (req, res, next, id) => {
   Order.findById(id)
-    .populate("subServices.subService", "name price")
+    .populate("orders.subService", "name price count status")
     .exec((err, order) => {
       if (err || !order) {
         return res.status(400).json({
@@ -43,6 +43,18 @@ exports.listOrders = (req, res) => {
         });
       }
       res.json(orders);
+    });
+};
+exports.singleOrder = async (req, res) => {
+  Order.findById(req.params.orderId)
+    .populate("orders.subService")
+    .exec((err, order) => {
+      if (err) {
+        return res.status(400).json({
+          error: errorHandler(err),
+        });
+      }
+      res.json(order);
     });
 };
 

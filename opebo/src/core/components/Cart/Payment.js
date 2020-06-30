@@ -60,7 +60,7 @@ const ProcessPayment = ({ paymentData, address, userId, token }) => {
   const pay = (amount, name, email, address) => {
     setValues({ ...values, error: false, loading: true });
     const options = {
-      key: "rzp_test_ubV0DtfINTupvm",
+      key: "rzp_live_CmhsHSSimzeg8H",
       amount: amount * 100,
       name: name,
       description: "Payment",

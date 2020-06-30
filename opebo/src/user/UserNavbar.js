@@ -18,7 +18,7 @@ const isActive = (history, path) => {
 
 const UserNavbar = ({ history }) => {
   const [profileDropdown, toggleProfileDropdown] = useState(false);
-  //const [purhistory, setHistory] = useState([]);
+
   const logo = require("../assets/images/logo.png");
 
   const {
@@ -42,6 +42,10 @@ const UserNavbar = ({ history }) => {
   }, [_id, token]);
 
   const links = [
+    {
+      route: `/`,
+      title: `Home`,
+    },
     {
       route: `/user/dashboard/${_id}`,
       title: `Profile`,

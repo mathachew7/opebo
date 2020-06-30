@@ -1,29 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { isAuthenticated } from "../auth";
 import { Link, withRouter } from "react-router-dom";
-
 import moment from "moment";
 import Footer from "../modules/components/Footer";
-import UserNavbar from "./UserNavbar";
+import AdminNavbar from "./AdminNavbar";
 import Spinner from "../core/components/Spinner";
 import { getSingleOrder } from "../core/apiCore";
 
-const CartCard2 = React.lazy(() => import("../core/components/Cart/CartCard2"));
-
-const UserOrder = (props) => {
+const FetchSingleOrder = (props) => {
   const [bookingData, setBookingData] = useState([]);
   const [fetched, setFetched] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  const {
-    user: { _id, name, email, role },
-  } = isAuthenticated();
-  const token = isAuthenticated().token;
 
   const orderId = props.match.params.orderId;
 
   const init = (orderId) => {
-    setLoading(true);
     setFetched(false);
     getSingleOrder(orderId).then((data) => {
       if (data.error) {
@@ -31,52 +20,36 @@ const UserOrder = (props) => {
       } else {
         setBookingData(data);
         setFetched(true);
-        setLoading(false);
       }
     });
   };
-  // const init = (orderId) => {
-  //   getSingleOrder(orderId).then((data) => {
-  //     console.log(data);
-  //   });
-  // };
   useEffect(() => {
     init(orderId);
   }, [orderId]);
-  console.log(bookingData);
+
   const breadLinks = () => {
     return (
       <div className='flex flex-row mb-2'>
         <Link
           className='text-xs text-gray-500 hover:text-gray-800'
-          to={`/user/dashboard/${isAuthenticated().user._id}`}
+          to={`/admin/dashboard`}
         >
           Your account >{" "}
         </Link>
         <Link
           className='ml-2 text-xs text-orange-600 hover:text-orange-500'
-          to={`/user/bookings/${isAuthenticated().user._id}`}
+          to={`/admin/viewOrders`}
         >
-          Your Bookings >{" "}
+          All Orders >{" "}
         </Link>
-        <Link
-          className='ml-2 text-xs text-orange-600 hover:text-orange-500'
-          to={`/user/bookings/${isAuthenticated().user._id}`}
-        >
+        <Link className='ml-2 text-xs text-orange-600 hover:text-orange-500'>
           Order Details >{" "}
         </Link>
       </div>
     );
   };
 
-  let Id;
-
   const orderCard = (orderData) => {
-    // orderData.map((order, i) => (
-    //   <div key={i}>
-    //     <h1>helloe</h1>
-    //   </div>
-    // ));
     return (
       <div>
         <div className='text-xs text-gray-900 flex flex-row justify-start'>
@@ -106,8 +79,8 @@ const UserOrder = (props) => {
             <p className='font-semibold text-gray-900'>Order Summary</p>
             <div className='flex flex-row justify-between'>
               <div className='flex flex-col mr-16 text-left'>
-                <p className='font-semibold text-gray-900'>Grand Total: </p>
-                <p>(including 18%)</p>
+                <p className='font-semibold text-gray-900'>Grand Total </p>
+                <p>(including 18% GST)</p>
               </div>
               <div className='flex flex-col justify-end items-end text-right'>
                 <p className='font-semibold text-gray-900'>
@@ -152,7 +125,7 @@ const UserOrder = (props) => {
   const orderInfo = (orderData) => {
     return (
       <>
-        {UserNavbar(props)}
+        {AdminNavbar(props)}
         <div className='justify-center items-center md:px-40 mb-10 '>
           <div className='bg-white flex flex-col rounded overflow-hidden px-3 -pt-16'>
             {breadLinks()}
@@ -174,4 +147,4 @@ const UserOrder = (props) => {
   );
 };
 
-export default withRouter(UserOrder);
+export default withRouter(FetchSingleOrder);

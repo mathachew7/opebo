@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Layout from "../core/Layout";
+
 import { isAuthenticated } from "./adminAuth";
 import { Link } from "react-router-dom";
 import { getContactMessage } from "./apiAdmin";
 import AdminNavbar from "./AdminNavbar";
+import moment from "moment";
 
 import Spinner from "../core/components/Spinner";
 
@@ -51,7 +52,9 @@ const ContactMessage = ({ history }) => {
          flex flex-row justify-between uppercase items-baseline px-3 pt-2'
         >
           <p className='text-xs'>message #{messages._id}</p>
-          <p className='text-xs'>date :{messages.createdAt}</p>
+          <p className='text-xs'>
+            date :{moment(messages.createdAt).format("llll")}
+          </p>
         </div>
         <div className='px-3 py-2'>
           <div>Name: {messages.name}</div>

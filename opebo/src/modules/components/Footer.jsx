@@ -18,8 +18,7 @@ const footer = (props) => {
                 Product
               </div>
               <Link
-                to='/user'
-                key='User'
+                key='Popular'
                 className='inline-block py-2 px-3 text-gray-500 hover:text-orange-500 font-medium no-underline'
               >
                 Popular
@@ -72,11 +71,7 @@ const footer = (props) => {
                 Return, Refund policy
               </Link>
               <div>
-                <a
-                  href='/'
-                  target='_blank'
-                  className='inline-block py-2 px-3 text-gray-500 hover:text-orange-500 font-medium no-underline'
-                >
+                <a className='inline-block py-2 px-3 text-gray-500 hover:text-orange-500 font-medium no-underline'>
                   Works
                 </a>
               </div>
@@ -87,26 +82,20 @@ const footer = (props) => {
               </div>
               <div>
                 <a
-                  href='/'
-                  target='_blank'
+                  href='/contact'
                   className='inline-block py-2 px-3 text-gray-500 hover:text-orange-500 font-medium no-underline'
                 >
                   Contact
                 </a>
               </div>
               <div>
-                <a
-                  href='/'
-                  target='_blank'
-                  className='inline-block py-2 px-3 text-gray-500 hover:text-orange-500 font-medium no-underline'
-                >
+                <a className='inline-block py-2 px-3 text-gray-500 hover:text-orange-500 font-medium no-underline'>
                   Vendor Login
                 </a>
               </div>
               <div>
                 <a
                   href='/'
-                  target='_blank'
                   className='inline-block py-2 px-3 text-gray-500 hover:text-orange-500 font-medium no-underline'
                 >
                   Services
@@ -114,7 +103,7 @@ const footer = (props) => {
               </div>
               <div>
                 <Link
-                  to='/admin/signin'
+                  to='/about'
                   className='inline-block py-2 px-3 text-gray-500 hover:text-orange-500 font-medium no-underline'
                 >
                   Info
@@ -128,19 +117,19 @@ const footer = (props) => {
               <div className='flex pt-4'>
                 <a
                   className='block flex items-center text-white hover:text-orange-500 mr-6 no-underline'
-                  href='https://whatsapp.com'
+                  href='https://wa.me/917042161702'
                 >
                   <i className='fab fa-whatsapp text-2xl'></i>
                 </a>
                 <a
                   className='block flex items-center text-white hover:text-orange-500 mr-6 no-underline'
-                  href='https://facebook.com'
+                  href='https://www.facebook.com/opeboindustries/'
                 >
                   <i className='fab fa-facebook text-2xl'></i>
                 </a>
                 <a
                   className='block flex items-center text-white hover:text-orange-500 no-underline'
-                  href='https://instagram.com'
+                  href='https://www.instagram.com/opeboindustries/'
                 >
                   <i className='fab fa-instagram text-2xl'></i>
                 </a>

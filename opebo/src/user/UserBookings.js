@@ -6,16 +6,12 @@ import moment from "moment";
 import Footer from "../modules/components/Footer";
 import UserNavbar from "./UserNavbar";
 import Spinner from "../core/components/Spinner";
-import { getSubServiceByServiceId, getServices } from "../core/apiCore";
 
 const CartCard2 = React.lazy(() => import("../core/components/Cart/CartCard2"));
 
 const UserBookings = ({ history }) => {
   const [bookingHistory, setBookingHistory] = useState([]);
   const [fetched, setFetched] = useState(false);
-  const [cardFetched, setCardFetched] = useState(false);
-  const [subServices, setSubServices] = useState([]);
-  const [services, setservices] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const {
@@ -103,20 +99,18 @@ const UserBookings = ({ history }) => {
                   </p>
                 </div>
                 <p className='text-base font-semibold'>Price: {order.price}</p>
-              </div>
-              <div className=' py-2 flex flex-row justify-end'>
-                <Link
-                  className='bg-orange-500 font-semibold hover:bg-orange-600 border border-gray-200 text-xsm px-5 py-2 text-white rounded'
-                  key={index}
-                  to={`/user/bookings/${isAuthenticated().user._id}/${
-                    order._id
-                  }`}
-                >
-                  Order details
-                </Link>
+                <hr />
               </div>
             </>
           ))}
+          <div className=' py-2 flex flex-row justify-end'>
+            <Link
+              className='bg-orange-500 font-semibold hover:bg-orange-600 border border-gray-200 text-xsm px-5 py-2 text-white rounded'
+              to={`/user/bookings/${isAuthenticated().user._id}/${booking._id}`}
+            >
+              Order details
+            </Link>
+          </div>
         </div>
       </div>
     ));

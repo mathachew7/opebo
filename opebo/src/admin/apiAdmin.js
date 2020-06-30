@@ -274,21 +274,6 @@ export const getSubServiceByServiceId = (serviceId) => {
     })
     .catch((err) => console.log(err));
 };
-//<<-- all the order related apis are here -->>
-//api for listing all the orders
-// export const listOrders = (userId, token) => {
-//   return fetch(`${API}/order/list/${userId}`, {
-//     method: "GET",
-//     headers: {
-//       Accept: "application/json",
-//       Authorization: `Bearer ${token}`,
-//     },
-//   })
-//     .then((response) => {
-//       return response.json();
-//     })
-//     .catch((err) => console.log(err));
-// };
 
 //api to get status values as per changes in front-end
 export const getStatusValues = (userId, token) => {

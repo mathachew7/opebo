@@ -20,9 +20,6 @@ const UserDashboard = ({ history }) => {
       if (data.error) {
         console.log(data.error);
       }
-      // else {
-      //   setHistory(data);
-      // }
     });
   };
 

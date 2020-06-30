@@ -112,6 +112,7 @@ const ManageSubServices = React.lazy(() =>
 );
 const UpdateSubService = React.lazy(() => import("../admin/UpdateSubService"));
 const ViewOrders = React.lazy(() => import("../admin/ViewOrders"));
+const FetchSingleOrder = React.lazy(() => import("../admin/OrderDetails"));
 const ContactMessage = React.lazy(() => import("../admin/ContactMessage"));
 
 // Other components----------------------------------
@@ -202,8 +203,16 @@ function Routes() {
             />
 
             {/* Admin Routes */}
-            <Route exact path='/admin/signup' component={AdminSignup} />
-            <Route exact path='/admin/signin' component={AdminSignin} />
+            <Route
+              exact
+              path='/admin/OpeBo/industries/0980/signup'
+              component={AdminSignup}
+            />
+            <Route
+              exact
+              path='/admin/OpeBo/industries/0980/signin'
+              component={AdminSignin}
+            />
             <AdminRoute
               path='/admin/dashboard'
               exact
@@ -248,7 +257,11 @@ function Routes() {
               component={UpdateSubService}
             />
             <AdminRoute path='/admin/viewOrders' exact component={ViewOrders} />
-
+            <AdminRoute
+              path='/admin/order/details/:orderId'
+              exact
+              component={FetchSingleOrder}
+            />
             <AdminRoute
               path='/contact/messages'
               exact

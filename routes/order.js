@@ -8,6 +8,7 @@ const {
   listOrders,
   getStatusValues,
   orderById,
+  singleOrder,
   updateOrderStatus,
 } = require("../controllers/order");
 
@@ -35,7 +36,7 @@ router.put(
   isAdmin,
   updateOrderStatus
 );
-
+router.get("/singleOrder/:orderId", singleOrder);
 router.param("userId", userById);
 router.param("orderId", orderById);
 

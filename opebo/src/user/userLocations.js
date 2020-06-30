@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { isAuthenticated } from "../auth";
 import { Link, withRouter } from "react-router-dom";
 import { getPurchaseHistory, getUserAddress } from "./apiUser";
-//import moment from "moment";
+
 import Footer from "../modules/components/Footer";
 import UserNavbar from "./UserNavbar";
 import Spinner from "../core/components/Spinner";
@@ -10,9 +10,8 @@ const CartCard2 = React.lazy(() => import("../core/components/Cart/CartCard2"));
 
 const UserLocations = ({ history }) => {
   const [Address, setAddress] = useState([]);
-  const [bookingHistory, setBookingHistory] = useState([]);
+
   const [fetched, setFetched] = useState(false);
-  const [cardFetched, setCardFetched] = useState(false);
 
   const {
     user: { _id, name, email, role },
@@ -29,17 +28,6 @@ const UserLocations = ({ history }) => {
       }
     });
   };
-  // const init = (userId, token) => {
-  //   setFetched(false);
-  //   getPurchaseHistory(userId, token).then((data) => {
-  //     if (data.error) {
-  //       console.log(data.error);
-  //     } else {
-  //       setBookingHistory(data);
-  //       setFetched(true);
-  //     }
-  //   });
-  // };
 
   useEffect(() => {
     init(_id, token);

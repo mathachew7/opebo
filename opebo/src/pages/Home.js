@@ -16,7 +16,6 @@ import Spinner from "../core/components/Spinner";
 
 const Home = () => {
   const [categories, setCategories] = useState([]);
-  // const [datas, setDatas] = useState([]);
 
   const loadCategories = () => {
     getCategories().then((data) => {
@@ -28,22 +27,8 @@ const Home = () => {
     });
   };
 
-  // const loadData = async () => {
-  //   try {
-  //     const response = await getCategories();
-  //     if (response.error) {
-  //       console.log(response.error);
-  //     } else {
-  //       setDatas(response);
-  //     }
-  //   } catch (err) {
-  //     console.log("Fetch Failed!", err);
-  //   }
-  // };
-
   useEffect(() => {
     loadCategories();
-    // loadData();
   }, []);
 
   return (
@@ -53,12 +38,6 @@ const Home = () => {
       <Search />
 
       <section className='antialiased'>
-        {/* <div className='mt-4 text-center'>
-          <p className='text-2xl font-sans font-bold text-black'>
-            <span className='text-sm font-medium'> services on demand</span>
-          </p>
-        </div> */}
-
         <div className='mt-5 flex flex-wrap justify-center items-start px-2 md:px-10'>
           {categories.map((category, i) => (
             <CategoryCard category={category} key={i} />

@@ -204,3 +204,13 @@ export const createOrder = (userId, token, createOrderData) => {
     })
     .catch((err) => console.log(err));
 };
+
+export const getSingleOrder = (orderId) => {
+  return fetch(`${API}/singleOrder/${orderId}`, {
+    method: "GET",
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};

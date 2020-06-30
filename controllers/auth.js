@@ -25,7 +25,6 @@ var transport = nodemailer.createTransport({
   },
 });
 
-console.log(process.env.MAIL_USERNAME);
 exports.signup = (req, res) => {
   // console.log("req.body", req.body);
   const { phone } = req.body;
