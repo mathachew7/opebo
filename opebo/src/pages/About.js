@@ -83,7 +83,7 @@ const About = () => {
             </div>
             <div className='w-1/3 md:w-1/4 flex-col'>
               <h2 className='text-2xl md:text-4xl text-gray-200 md:text-gray-700 font-bold'>
-                8
+                3
               </h2>
               <span className='md:text-xl mr-2 text-gray-500 md:text-gray-600'>
                 Cities across India

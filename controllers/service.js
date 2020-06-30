@@ -195,31 +195,3 @@ exports.photo = (req, res, next) => {
   }
   next();
 };
-/**
- * list services by search
- * we will implement service search in react frontend
- * we will make api request and show the services to users based on what they wants
- */
-
-// exports.listSearch = (req, res) => {
-//   // create query object to hold search value and location value
-//   const query = {};
-//   // assign search value to query.name
-//   if (req.query.search) {
-//     query.name = { $regex: req.query.search, $options: "i" };
-//     // assign location value to query.location
-//     if (req.query.location && req.query.location != "All") {
-//       query.location = req.query.location;
-//     }
-//     // find the product based on query object with 1 property
-//     // search and then push location with the link to open sub-services in that location
-//     Service.find(query, (err, services) => {
-//       if (err) {
-//         return res.status(400).json({
-//           error: errorHandler(err),
-//         });
-//       }
-//       res.json(services);
-//     }).select("-photo");
-//   }
-// };

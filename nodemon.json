@@ -4,9 +4,6 @@
     "PORT": 8000,
     "SERVER_URI": "http://192.168.1.8:",
     "JWT_SECRET": "thisisopebosecretkey",
-    "SENDGRID_API_KEY": "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",
-    "NODE_ENV": "development",
-
-    "MAIL_PASSWORD": "OpeBo1234@"
+    "NODE_ENV": "development"
   }
 }

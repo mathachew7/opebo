@@ -1,5 +1,5 @@
 "use strict";
-const Razorpay = require("razorpay");
+var Razorpay = require("razorpay");
 require("dotenv").config();
 
 var instance = new Razorpay({
@@ -8,13 +8,11 @@ var instance = new Razorpay({
 });
 
 exports.createPayment = (req, res) => {
-  // console.log("this api is getting hit");
   const { payment_id } = req.params;
   const amount = Number(req.params.amount * 100);
   instance.payments
     .capture(payment_id, amount)
     .then((data) => {
-      // console.log(data);
       res.json(data);
     })
     .catch((error) => {

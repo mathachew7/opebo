@@ -106,7 +106,7 @@ function ReturnRefundPolicy() {
               <b>
                 By email:{" "}
                 <span className='text-orange-500'>
-                  support@opeboindustries.com
+                  contact@opeboindustries.com
                 </span>
               </b>
             </li>
@@ -121,7 +121,7 @@ function ReturnRefundPolicy() {
             <li>
               <b>
                 By phone number:{" "}
-                <span className='text-orange-500'>1112223330</span>
+                <span className='text-orange-500'>1800 1234 103</span>
               </b>
             </li>
           </ul>
@@ -215,7 +215,7 @@ function ReturnRefundPolicy() {
               <b>
                 By email:{" "}
                 <span className='text-orange-500'>
-                  support@opeboindustries.com
+                  contact@opeboindustries.com
                 </span>
               </b>
             </li>
@@ -230,7 +230,7 @@ function ReturnRefundPolicy() {
             <li>
               <b>
                 By phone number:{" "}
-                <span className='text-orange-500'>1112223330</span>
+                <span className='text-orange-500'>1800 1234 103</span>
               </b>
             </li>
           </ul>

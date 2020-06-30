@@ -86,36 +86,6 @@ const CheckoutAddr = ({ subServices, finalAddress }) => {
     return !Object.keys(obj).length;
   }
 
-  // const checkAddr = (data) => {
-  //   if (isEmpty(data.address)) {
-  //     setData({
-  //       ...data,
-  //       error: "Address is empty. Please select or enter a new address.",
-  //     });
-  //   } else {
-  //     setData({ ...data, error: false });
-  //     // setRedirect(true);
-  //   }
-  // };
-
-  // const shouldRedirect = (redirect) => {
-  //   if (redirect) {
-  //     return (
-  //       <>
-  //         <Redirect to='/payment' />
-  //         <Payment
-  //           paymentData={data.totalWithTax}
-  //           address={data.address}
-  //           userId={userId}
-  //           token={token}
-  //         />
-  //       </>
-  //     );
-  //   }
-  // };
-
-  //const { subService, name, price, count } = cartData
-
   let singleOrders = [];
 
   const storeData = (items) => {
@@ -140,13 +110,12 @@ const CheckoutAddr = ({ subServices, finalAddress }) => {
       });
     } else {
       setData({ ...data, error: false });
-      // setRedirect(true);
 
       storeData(subServices);
 
       setData({ ...data, error: false, loading: true });
       const options = {
-        key: "rzp_test_ubV0DtfINTupvm",
+        key: "rzp_test_9vbBlpgYxp2OO8",
         amount: data.totalWithTax * 100,
         name: data.address.name,
         currency: "INR",
@@ -167,18 +136,19 @@ const CheckoutAddr = ({ subServices, finalAddress }) => {
             .then((resp) => {
               createOrder(userId, token, createOrderData)
                 .then((res) => {
-                  console.log(res);
                   emptyCart(() => {
-                    Toast.info("Payment success and empty cart", 1000, () => {
-                      // shouldRedirect(data);
-                      // window.location = `/order/${data._id}`;
-                      // do something after the toast disappears
-                    });
+                    Toast.info(
+                      "Payment success and empty cart",
+                      1000,
+                      () => {}
+                    );
                   });
+
                   setData({
                     loading: false,
                     success: true,
                   });
+                  setRedirect(true);
                 })
                 .catch((err) => {
                   console.log(err);
@@ -211,11 +181,11 @@ const CheckoutAddr = ({ subServices, finalAddress }) => {
     }
   };
 
-  // const shouldRedirect = (order) => {
-  //   if (order) {
-  //     return <Redirect to='/order/:order._id' />;
-  //   }
-  // };
+  const shouldRedirect = (order) => {
+    if (order) {
+      return <Redirect to={`/user/bookings/${userId}`} />;
+    }
+  };
 
   const showError = (error) => (
     <div
@@ -270,7 +240,7 @@ const CheckoutAddr = ({ subServices, finalAddress }) => {
         {/* {showLoading()} */}
         {/* {showSuccess(success)} */}
         {showError(error)}
-        {/* {shouldRedirect(redirect)} */}
+        {shouldRedirect(redirect)}
         <div className='mt-5 w-full flex flex-col justify-center items-center nowrap'>
           {showCheckout()}
         </div>

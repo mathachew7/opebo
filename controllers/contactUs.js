@@ -92,7 +92,6 @@ exports.createContactUs = (req, res) => {
 };
 
 exports.ListContactMessage = (req, res) => {
-  console.log("this api is getting hit");
   let limit = req.query.limit ? parseInt(req.query.limit) : 6;
   ContactUs.find()
     .limit(limit)
