@@ -177,7 +177,7 @@ const CheckoutAddress = () => {
         <div className='flex flex-col md:flex-row antialiased'>
           <div className='md:px-10 md:w-2/3 md:border-r border-gray-400'>
             <div className='py-2 pt-5 px-5 flex flex-row justify-between items-center'>
-              <h1 className='text-md text-gray-600 font-semibold'>
+              <h1 className='text-md align-baseline text-gray-600 font-semibold'>
                 Select your Address
               </h1>
               {/* <button className='px-3 py-1 text-xs font-semibold uppercase border-2 border-gray-900 rounded text-gray-900 hover:bg-gray-900 hover:text-gray-100'>

@@ -4,7 +4,9 @@ import { Link, Redirect } from "react-router-dom";
 import CheckoutCard from "./CheckoutCard";
 //import Payment from "./Payment";
 import { processPayment, createOrder } from "../../apiCore";
-import Spinner from "../Spinner";
+import { emptyCart } from "../../cartHelpers";
+import Loading from "../Loading";
+import Toast from "light-toast";
 
 const CheckoutAddr = ({ subServices, finalAddress }) => {
   const [data, setData] = useState({
@@ -55,12 +57,18 @@ const CheckoutAddr = ({ subServices, finalAddress }) => {
         to='/checkout-address'
         className='mt-5 w-full flex flex-col justify-center items-center nowrap'
       >
-        <button
-          onClick={pay}
-          className='w-full py-4 bg-black hover:bg-gray-900 text-white rounded-lg text-md font-bold uppercase'
-        >
-          Proceed to payment
-        </button>
+        {loading ? (
+          <button className='w-full py-4 bg-black hover:bg-gray-900 text-white rounded-lg text-md font-bold uppercase'>
+            <Loading />
+          </button>
+        ) : (
+          <button
+            onClick={pay}
+            className='w-full py-4 bg-black hover:bg-gray-900 text-white rounded-lg text-md font-bold uppercase'
+          >
+            Proceed to payment
+          </button>
+        )}
       </Link>
     ) : (
       <Link
@@ -78,17 +86,17 @@ const CheckoutAddr = ({ subServices, finalAddress }) => {
     return !Object.keys(obj).length;
   }
 
-  const checkAddr = (data) => {
-    if (isEmpty(data.address)) {
-      setData({
-        ...data,
-        error: "Address is empty. Please select or enter a new address.",
-      });
-    } else {
-      setData({ ...data, error: false });
-      // setRedirect(true);
-    }
-  };
+  // const checkAddr = (data) => {
+  //   if (isEmpty(data.address)) {
+  //     setData({
+  //       ...data,
+  //       error: "Address is empty. Please select or enter a new address.",
+  //     });
+  //   } else {
+  //     setData({ ...data, error: false });
+  //     // setRedirect(true);
+  //   }
+  // };
 
   // const shouldRedirect = (redirect) => {
   //   if (redirect) {
@@ -126,56 +134,88 @@ const CheckoutAddr = ({ subServices, finalAddress }) => {
 
   const pay = (event) => {
     event.preventDefault();
-    checkAddr(data);
-    storeData(subServices);
-    console.log(singleOrders);
+    if (isEmpty(data.address)) {
+      Toast.info("Please enter or select address ", 1000, () => {
+        // do something after the toast disappears
+      });
+    } else {
+      setData({ ...data, error: false });
+      // setRedirect(true);
 
-    setData({ ...data, error: false, loading: true });
-    const options = {
-      key: "rzp_test_ubV0DtfINTupvm",
-      amount: data.totalWithTax * 100,
-      name: data.address.name,
-      currency: "INR",
-      receipt: "order_rcptid_11",
-      contact: data.address.phone,
-      description: "Payment",
-      handler(response) {
-        const payment_id = response.razorpay_payment_id;
+      storeData(subServices);
 
-        const createOrderData = {
-          orders: singleOrders,
-          transaction_id: payment_id,
-          amount: data.totalWithTax,
-          address: data.address,
-        };
-
-        processPayment(payment_id, data.totalWithTax)
-          .then((resp) => {
-            createOrder(userId, token, createOrderData)
-              .then((res) => {
-                console.log(res);
-              })
-              .catch((err) => console.log(err));
-          })
-          .catch(function (error) {
-            console.log("Request failed", error);
-          });
-      },
-      prefill: {
+      setData({ ...data, error: false, loading: true });
+      const options = {
+        key: "rzp_test_ubV0DtfINTupvm",
+        amount: data.totalWithTax * 100,
         name: data.address.name,
-        email: isAuthenticated().user.email,
-      },
-      notes: {
-        address: data.address,
-      },
-      theme: {
-        color: "#9D50BB",
-      },
-    };
-    const rzp1 = new window.Razorpay(options);
+        currency: "INR",
+        receipt: "order_rcptid_11",
+        contact: data.address.phone,
+        description: "Payment",
+        handler(response) {
+          const payment_id = response.razorpay_payment_id;
 
-    rzp1.open();
+          const createOrderData = {
+            orders: singleOrders,
+            transaction_id: payment_id,
+            amount: data.totalWithTax,
+            address: data.address,
+          };
+
+          processPayment(payment_id, data.totalWithTax)
+            .then((resp) => {
+              createOrder(userId, token, createOrderData)
+                .then((res) => {
+                  console.log(res);
+                  emptyCart(() => {
+                    Toast.info("Payment success and empty cart", 1000, () => {
+                      // shouldRedirect(data);
+                      // window.location = `/order/${data._id}`;
+                      // do something after the toast disappears
+                    });
+                  });
+                  setData({
+                    loading: false,
+                    success: true,
+                  });
+                })
+                .catch((err) => {
+                  console.log(err);
+                  setData({
+                    loading: false,
+                  });
+                });
+            })
+            .catch(function (error) {
+              console.log("Request failed", error);
+              setData({
+                loading: false,
+              });
+            });
+        },
+        prefill: {
+          name: data.address.name,
+          email: isAuthenticated().user.email,
+        },
+        notes: {
+          address: data.address,
+        },
+        theme: {
+          color: "#9D50BB",
+        },
+      };
+      const rzp1 = new window.Razorpay(options);
+
+      rzp1.open();
+    }
   };
+
+  // const shouldRedirect = (order) => {
+  //   if (order) {
+  //     return <Redirect to='/order/:order._id' />;
+  //   }
+  // };
 
   const showError = (error) => (
     <div
@@ -186,16 +226,16 @@ const CheckoutAddr = ({ subServices, finalAddress }) => {
     </div>
   );
 
-  const showSuccess = (success) => (
-    <div
-      className='flex alert alert-danger justify-center items-center bg-green-500 text-white py-1'
-      style={{ display: success ? "" : "none" }}
-    >
-      Thanks! Your payment was successful!
-    </div>
-  );
+  // const showSuccess = (success) => (
+  //   <div
+  //     className='flex alert alert-danger justify-center items-center bg-green-500 text-white py-1'
+  //     style={{ display: success ? "" : "none" }}
+  //   >
+  //     Thanks! Your payment was successful!
+  //   </div>
+  // );
 
-  const showLoading = () => loading && <Spinner />;
+  // const showLoading = () => loading && <Spinner />;
 
   return (
     <>
@@ -227,9 +267,10 @@ const CheckoutAddr = ({ subServices, finalAddress }) => {
             </h1>
           </div>
         </div>
-        {showLoading()}
-        {showSuccess(success)}
+        {/* {showLoading()} */}
+        {/* {showSuccess(success)} */}
         {showError(error)}
+        {/* {shouldRedirect(redirect)} */}
         <div className='mt-5 w-full flex flex-col justify-center items-center nowrap'>
           {showCheckout()}
         </div>

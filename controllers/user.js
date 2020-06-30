@@ -94,6 +94,22 @@ exports.orderHistory = (req, res) => {
     });
 };
 
+// NEED TO FETCH ORDER BY ID SINGLE
+
+// exports.orderbyId = (req, res) => {
+//   Order.find({ user: req.profile._id })
+//     .populate("user", "_id name")
+//     .sort("-created")
+//     .exec((err, orders) => {
+//       if (err) {
+//         return res.status(400).json({
+//           error: errorHandler(err),
+//         });
+//       }
+//       res.json(orders);
+//     });
+// };
+
 //adding address to user account
 exports.addUserAddress = (req, res, next) => {
   const address = new UserAddress(req.body);

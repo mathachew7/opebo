@@ -7,6 +7,7 @@ import Footer from "../modules/components/Footer";
 import UserNavbar from "./UserNavbar";
 import Spinner from "../core/components/Spinner";
 import { FaRegCircle, FaCheckCircle } from "react-icons/fa";
+import AddAddress from "../core/components/Address/AddAddress";
 
 const CartCard2 = React.lazy(() => import("../core/components/Cart/CartCard2"));
 
@@ -112,7 +113,7 @@ const UserAddresses = ({ history }) => {
 
   const showItems = (addr) => {
     return (
-      <div className='m-1 w-full flex flex-col justify-center mt-0 md:m-2 px-5'>
+      <div className='m-1 w-full flex flex-col justify-center mt-0 md:m-2 '>
         {addr.map((address, i) =>
           selected !== i
             ? notSelectedAddress(i, address)
@@ -126,10 +127,16 @@ const UserAddresses = ({ history }) => {
   const breadLinks = () => {
     return (
       <div className='flex flex-row mb-2'>
-        <Link className='text-xs text-gray-500 hover:text-gray-800'>
+        <Link
+          className='text-xs text-gray-500 hover:text-gray-800'
+          to={`/user/dashboard/${isAuthenticated().user._id}`}
+        >
           Your account >{" "}
         </Link>
-        <Link className='ml-2 text-xs text-orange-600 hover:text-orange-500'>
+        <Link
+          className='ml-2 text-xs text-orange-600 hover:text-orange-500'
+          to={`/user/locations/${isAuthenticated().user._id}`}
+        >
           Your address
         </Link>
       </div>
@@ -143,8 +150,12 @@ const UserAddresses = ({ history }) => {
         <div className='justify-center items-center md:px-40 mb-10'>
           <div className='bg-white flex flex-col rounded overflow-hidden px-3 -pt-16'>
             {breadLinks()}
-
-            <h1 className='text-2xl text-left font-semibold'>Your Addresses</h1>
+            <div className='py-2 pt-5 flex flex-row justify-between items-center'>
+              <h1 className='text-2xl text-left font-semibold'>
+                Your Addresses
+              </h1>
+              {AddAddress()}
+            </div>
 
             {fetched ? (
               add.length >= 0 ? (

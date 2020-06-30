@@ -3,25 +3,13 @@ import { isAuthenticated, signout } from "../auth";
 import { Link, withRouter } from "react-router-dom";
 import { getPurchaseHistory } from "./apiUser";
 //import moment from "moment";
+import UserNavbar from "./UserNavbar";
+import Spinner from "../core/components/Spinner";
 import Footer from "../modules/components/Footer";
 
 const avatar = require("../assets/images/avatar.jpg");
 
-const isActive = (history, path) => {
-  if (history.location.pathname === path) {
-    return {
-      color: "#fff",
-      backgroundColor: "#f6ad55",
-    };
-  } else {
-    return { color: "#111111" };
-  }
-};
-
 const UserDashboard = ({ history }) => {
-  //const [purhistory, setHistory] = useState([]);
-  const logo = require("../assets/images/logo-w.png");
-
   const {
     user: { _id, name, email, role },
   } = isAuthenticated();
@@ -42,57 +30,15 @@ const UserDashboard = ({ history }) => {
     init(_id, token);
   }, [_id, token]);
 
-  const links = [
-    {
-      route: `/`,
-      title: `Home`,
-    },
-
-    {
-      route: `/user/bookings/${_id}`,
-      title: `My Bookings`,
-    },
-    {
-      route: `/user/locations/${_id}`,
-      title: `My Locations`,
-    },
-    {
-      route: `/notifications`,
-      title: `Notifications`,
-    },
-    {
-      route: `/services`,
-      title: `Services`,
-    },
-    {
-      route: `/about`,
-      title: `About`,
-    },
-    {
-      route: `/contact`,
-      title: `Contact`,
-    },
-    {
-      route: `/opebospecials`,
-      title: `Opebo Specials`,
-    },
-  ];
-
-  const userNavbar = () => {
+  const breadLinks = () => {
     return (
-      <div className='overflow-hidden overflow-x-hidden flex items-center justify-center pt-2'>
-        <div className='scrolling-touch bg-transparent w-screen overflow-auto whitespace-no-wrap py-3 pb-10 px-2 text-center'>
-          {links.map((link) => (
-            <Link
-              key={link.title}
-              to={link.route}
-              style={isActive(history, `${link.route}`)}
-              className='no-underline mr-2 mb-2 p-3 rounded active:text-black hover:bg-gray-100 hover:text-white bg-gray-300 active:bg-orange-400 text-black'
-            >
-              {link.title}
-            </Link>
-          ))}
-        </div>
+      <div className='flex flex-row mb-2'>
+        <Link
+          className='text-xs text-gray-500 hover:text-gray-800'
+          to={`/user/dashboard/${isAuthenticated().user._id}`}
+        >
+          Your account{" "}
+        </Link>
       </div>
     );
   };
@@ -100,21 +46,10 @@ const UserDashboard = ({ history }) => {
   const userInfo = () => {
     return (
       <>
-        <header className='antialiased bg-gray-900 pb-2 font-sans'>
-          <div className='container mx-auto font-sans'>
-            <div className='flex items-center px-5 pt-4 pb-4 border-b-2 border-gray-500'>
-              <button className='flex flex-wrap items-center text-xl font-semibold'>
-                <Link to='/' key='Home'>
-                  <img className='h-10 mr-2 w-auto' src={logo} alt='logo'></img>
-                </Link>
-              </button>
-            </div>
-            {userNavbar()}
-          </div>
-        </header>
+        {UserNavbar(history)}
 
         <div className='bg-white sm:max-w-full max-w-md rounded overflow-hidden px-5 -pt-16'>
-          <div className='bg-gray-100 rounded'>
+          <div className=''>
             <div className='text-center p-6  border-b'>
               <img
                 className='h-24 w-24 rounded-full mx-auto'
@@ -169,15 +104,6 @@ const UserDashboard = ({ history }) => {
             <p className='text-gray-500 text-center italic text-xs'>
               Opebo Industries Ltd.
             </p>
-
-            <div className='px-6 py-4'>
-              <span className='inline-block rounded-full px-3 py-1 text-xs font-semibold text-gray-600 mr-2'>
-                Privacy Policy
-              </span>
-              <span className='inline-block rounded-full px-3 py-1 text-xs font-semibold text-gray-600 mr-2'>
-                Terms of Service
-              </span>
-            </div>
           </div>
         </div>
       </>

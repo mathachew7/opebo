@@ -40,11 +40,17 @@ const About = () => {
         <hr className='border-b w-1/2 m-auto my-6 border-orange-300' />
         <div>
           <h2 className='font-semibold text-xl md:text-2xl'>Who are we?</h2>
-          <p className='mb-4 font-normal px-10 md:px-20 text-gray-700 m-auto'>
-            Opebo (Opebo Industries Pvt. Ltd.) is an Indian based home-services
-            provider. We are an all-in-one platform that helps users/customers
-            hire premium and budget service professionals, from beauticians and
-            masseurs to security, sofa cleaners, carpenters and repair services.
+          <p className='mb-4 font-normal px-10 md:px-20 text-gray-700 m-auto text-justify'>
+            OpeBo Industries Lmt. is an at-home service provider in India. We
+            intend to build a comprehensive network of services to bridge the
+            demand-supply gap by providing a platform to all skilled and
+            experienced professionals and local service providers to connect
+            with those who are in need of their services. From medical, legal
+            and carpentry services to security, home tutorial and salon
+            services, we provide them all. We are a compact package that helps
+            customers to hire the best quality service professionals at minimum
+            cost. These professionals are trained and verified before being
+            allowed to list their services on our platform.
           </p>
           <p className='mt-10 mb-4 font-medium px-10 md:px-24 text-lg md:text-xl text-gray-900 m-auto'>
             Our Mission is to empower millions of service professionals by
@@ -100,8 +106,7 @@ const About = () => {
             </p>
             <p className='mt-10 font-semibold md:text-lg px-5 text-orange-600'>
               <i>
-                Only 1 in 10 service providers who register with us are allowed
-                to list their service.
+                We are trying to provide the best at-home service just for you.
               </i>
             </p>
           </div>
@@ -168,10 +173,9 @@ const About = () => {
           <div className='mt-16'>
             <h2 className='font-bold text-2xl'>Our Story so far</h2>
             <p className='mb-4 font-normal px-10 md:px-24 md:text-xl text-gray-900 m-auto'>
-              Opebo is now established in 8 cities all across India in:
-              Delhi-NCR, Bhopal, Ghaziabad, Faridabad, Gurugram, Greater Noida,
-              Patna and Chandigarh. We are expanding our services across India
-              in the coming future.
+              Opebo is now established in 3 cities all across India in: Delhi,
+              Patna and Ludhiana. We are expanding our services across India in
+              the coming future.
             </p>
           </div>
           <div className='flex p-10 justify-center items-center'>
@@ -192,40 +196,41 @@ const About = () => {
         <div className='flex flex-col justify-center items-center md:flex-row my-8'>
           <div className='m-2 w-full sm:w-1/2 md:w-1/3 flex flex-col items-center justify-center h-48 md:h-64 p-8 border border-transparent hover:border-purple-500 hover:shadow-md bg-white hover:transform-scale-subtle transition-normal hover:show-child'>
             <h3 className='mt-4 mb-1 text-lg font-bold'>
-              Shinjani Jha &#128512;
+              Anmol Bharti &#128512;
             </h3>
             <p className='mt-4 text-center text-gray-700 leading-normal px-6 hover:block'>
-              Shinjani Jha is responsible for marketing and product growth at
-              Opebo. When not busy at work, Shinjani enjoys immersing herself in
-              interesting experiences be it socializing, travelling, cooking her
-              favorite dishes.
+              Anmol Bharti is the CEO and Co-founder of Opebo Industries Lmt.
+              When not busy at work, Anmol Bharti enjoys immersing himself in
+              interesting experiences be it socializing, travelling around the
+              world.
             </p>
           </div>
           <div className='m-2 w-full sm:w-1/2 md:w-1/3 flex flex-col items-center justify-center h-48 md:h-64 p-8 hover:shadow-md border border-transparent hover:border-purple-500 bg-white hover:transform-scale-subtle transition-normal hover:show-child'>
             <h3 className='mt-4 mb-1 text-lg font-bold'>
-              Avinash Singh &#128521;
+              Abhay Kumar Bharti &#128521;
             </h3>
             <p className='mt-4 text-center text-gray-700 leading-normal px-6 hover:block'>
-              Avinash Singh is responsible for marketing and product growth at
-              Opebo. When not busy at work, Shinjani enjoys immersing herself in
-              interesting experiences be it socializing, travelling, cooking her
-              favorite dishes.
+              Abhay Kumar Bharti is the Co-Founder of Opebo Industries Lmt. and
+              is responsible for handling the technical and services related
+              work in the company and bringing in investors for the company.
             </p>
           </div>
           <div className='m-2 w-full sm:w-1/2 md:w-1/3 flex flex-col items-center justify-center h-48 md:h-64 p-8 hover:shadow-md border border-transparent hover:border-purple-500 bg-white hover:transform-scale-subtle transition-normal hover:show-child'>
             <h3 className='mt-4 mb-1 text-lg font-bold'>
-              Shubham Mehta &#128526;
+              Ramkrishna Kumar &#128526;
             </h3>
             <p className='mt-4 text-center text-gray-700 leading-normal px-6 hover:block'>
-              Mehta Jha is responsible for marketing and product growth at
-              Opebo. When not busy at work, Shinjani enjoys immersing herself in
-              interesting experiences be it socializing, travelling, cooking her
-              favorite dishes.
+              Ramkrishna Kumar is responsible for marketing and product growth
+              at Opebo. When not busy at work, Ramkrishna Kumar enjoys immersing
+              himself in interesting experiences be it socializing and
+              travelling
             </p>
           </div>
         </div>
       </section>
-      <section className='bg-white py-4 font-sans'>
+
+      {/* INVESTORS */}
+      {/* <section className='bg-white py-4 font-sans'>
         <div className='text-center'>
           <h1 className='font-bold text-2xl'>
             Our Investors
@@ -271,7 +276,7 @@ const About = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       <section className='mt-8 justify-center flex justify-center py-10 items-center px-4 '>
         <div className='w-full md:w-1/2 flex flex-col py-4 bg-gray-100 justify-center items-center shadow-lg'>
           <FaRegGrin className='text-green-400 text-5xl' />

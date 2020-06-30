@@ -39,6 +39,8 @@ const User = React.lazy(() => import("../pages/User"));
 const Contact = React.lazy(() => import("../pages/Contact"));
 const Cart = React.lazy(() => import("../pages/Cart"));
 const CheckoutAddress = React.lazy(() => import("../pages/CheckoutAddress"));
+const Order = React.lazy(() => import("../pages/Order"));
+
 const Disclaimer = React.lazy(() => import("../pages/Disclaimer"));
 const PrivacyPolicy = React.lazy(() => import("../pages/PrivacyPolicy"));
 const TermsAndConditions = React.lazy(() =>
@@ -65,6 +67,7 @@ const Signup = React.lazy(() => import("../user/Signup"));
 const Signin = React.lazy(() => import("../user/Signin"));
 const UserDashboard = React.lazy(() => import("../user/UserDashboard"));
 const UserBookings = React.lazy(() => import("../user/UserBookings"));
+const UserOrder = React.lazy(() => import("../user/UserOrder"));
 const UserAddresses = React.lazy(() => import("../user/UserAddresses"));
 const ProfileUpdate = React.lazy(() => import("../user/ProfileUpdate"));
 const SigninPhone = React.lazy(() => import("../user/SigninPhone"));
@@ -144,6 +147,7 @@ function Routes() {
             <Route exact path='/user/' component={User} />
 
             <Route exact path='/cart' component={Cart} />
+            <Route exact path='/order/:orderId' component={Order} />
             <Route exact path='/contact/' component={Contact} />
             <Route exact path='/checkout-address' component={CheckoutAddress} />
             <Route exact path='/privacypolicy/' component={PrivacyPolicy} />
@@ -180,6 +184,11 @@ function Routes() {
               path='/user/bookings/:userId'
               exact
               component={UserBookings}
+            />
+            <PrivateRoute
+              path='/user/bookings/:userId/:orderId'
+              exact
+              component={UserOrder}
             />
             <PrivateRoute
               path='/user/locations/:userId'

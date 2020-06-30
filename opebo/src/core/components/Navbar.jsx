@@ -22,10 +22,6 @@ const links = [
     route: `/contact`,
     title: `Contact`,
   },
-  {
-    route: `/opebo-rewards`,
-    title: `Opebo Rewards`,
-  },
 ];
 
 const isActive = (history, path) => {
@@ -85,8 +81,8 @@ const Navbar = ({ history }) => {
   };
 
   return (
-    <header className='bg-gray-300 font-sans items-center'>
-      <div className='flex flex-wrap items-center justify-between mx-auto p-3 md:p-4 md:pt-0'>
+    <header className='bg-gray-200 font-sans items-center'>
+      <div className='flex flex-wrap items-center justify-between mx-auto p-3 md:p-4 md:pr-12 md:pt-0'>
         <Link
           className='flex items-center md:mt-3 md:ml-12 no-underline text-white'
           style={isActive(history, "/")}
@@ -102,7 +98,7 @@ const Navbar = ({ history }) => {
           <div className='md:hidden'>{cartButton()}</div>
 
           <button
-            className='block md:hidden flex items-center px-3 py-2 rounded text-black'
+            className='block md:hidden items-center px-3 py-2 rounded text-black'
             onClick={() => toggleExpansion(!isExpanded)}
           >
             {isExpanded ? (

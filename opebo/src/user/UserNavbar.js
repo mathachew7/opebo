@@ -43,8 +43,8 @@ const UserNavbar = ({ history }) => {
 
   const links = [
     {
-      route: `/`,
-      title: `Home`,
+      route: `/user/dashboard/${_id}`,
+      title: `Profile`,
     },
 
     {

@@ -58,6 +58,21 @@ export const getPurchaseHistory = (userId, token) => {
     .catch((err) => console.log(err));
 };
 
+export const getOrderById = (userId, token, orderId) => {
+  return fetch(`${API}/order/${orderId}/user/${userId}`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};
+
 export const addUserAddress = (userId, token, address) => {
   return fetch(`${API}/user/addAddress/${userId}`, {
     method: "POST",
