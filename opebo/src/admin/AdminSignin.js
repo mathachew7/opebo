@@ -44,14 +44,14 @@ const AdminSignin = () => {
           <h2 className='mt-10 text-center text-3xl leading-9 font-sans font-bold text-black'>
             Hi, Admin!
           </h2>
-          <p className='mt-0 text-center text-sm font-sans leading-5 text-gray-600 max-w'>
+          {/*<p className='mt-0 text-center text-sm font-sans leading-5 text-gray-600 max-w'>
             <Link
-              to='/admin/signup'
+              to='/admin/OpeBo/industries/0980/signup'
               className='font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150'
             >
               Oops! New admin? Go to Sign up
             </Link>
-          </p>
+  </p> */}
         </div>
         <form className='mt-8' action='#' method='POST'>
           <input type='hidden' name='remember' value='true' />
@@ -82,7 +82,7 @@ const AdminSignin = () => {
             </div>
           </div>
 
-          <div className='mt-6 flex items-center justify-between'>
+          {/* <div className='mt-6 flex items-center justify-between'>
             <div className='text-sm leading-5'>
               <Link
                 to='/admin/forgot-password'
@@ -91,7 +91,7 @@ const AdminSignin = () => {
                 Forgot your password?
               </Link>
             </div>
-          </div>
+  </div> */}
 
           <div className='mt-6'>
             <button

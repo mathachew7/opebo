@@ -60,14 +60,14 @@ const AdminSignup = () => {
             <h2 className='mt-10 text-center text-3xl leading-9 font-sans font-bold text-black'>
               Create admin account
             </h2>
-            <p className='mt-0 text-center text-sm font-sans leading-5 text-gray-600 max-w'>
+            {/*<p className='mt-0 text-center text-sm font-sans leading-5 text-gray-600 max-w'>
               <a
-                href='/admin/signin'
+                href='/admin/OpeBo/industries/0980/signin'
                 className='font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150'
               >
                 Already have an admin account? Login Instead
               </a>
-            </p>
+  </p> */}
           </div>
           <form className='mt-8'>
             <input type='hidden' name='remember' value='true' />

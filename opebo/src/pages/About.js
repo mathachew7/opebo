@@ -196,10 +196,21 @@ const About = () => {
         <div className='flex flex-col justify-center items-center md:flex-row my-8'>
           <div className='m-2 w-full sm:w-1/2 md:w-1/3 flex flex-col items-center justify-center h-48 md:h-64 p-8 border border-transparent hover:border-purple-500 hover:shadow-md bg-white hover:transform-scale-subtle transition-normal hover:show-child'>
             <h3 className='mt-4 mb-1 text-lg font-bold'>
-              Anmol Bharti &#128512;
+              Abhay Kumar Bharti &#128512;
+            </h3>
+
+            <p className='mt-4 text-center text-gray-700 leading-normal px-6 hover:block'>
+              Abhay Kumar Bharti is the Director of Opebo Industries Lmt. and is
+              responsible for handling the technical and services related work
+              in the company and bringing in investors for the company.
+            </p>
+          </div>
+          <div className='m-2 w-full sm:w-1/2 md:w-1/3 flex flex-col items-center justify-center h-48 md:h-64 p-8 hover:shadow-md border border-transparent hover:border-purple-500 bg-white hover:transform-scale-subtle transition-normal hover:show-child'>
+            <h3 className='mt-4 mb-1 text-lg font-bold'>
+              Anmol Bharti &#128521;
             </h3>
             <p className='mt-4 text-center text-gray-700 leading-normal px-6 hover:block'>
-              Anmol Bharti is the CEO and Co-founder of Opebo Industries Lmt.
+              Anmol Bharti is the Founder and Director of Opebo Industries Lmt.
               When not busy at work, Anmol Bharti enjoys immersing himself in
               interesting experiences be it socializing, travelling around the
               world.
@@ -207,23 +218,12 @@ const About = () => {
           </div>
           <div className='m-2 w-full sm:w-1/2 md:w-1/3 flex flex-col items-center justify-center h-48 md:h-64 p-8 hover:shadow-md border border-transparent hover:border-purple-500 bg-white hover:transform-scale-subtle transition-normal hover:show-child'>
             <h3 className='mt-4 mb-1 text-lg font-bold'>
-              Abhay Kumar Bharti &#128521;
-            </h3>
-            <p className='mt-4 text-center text-gray-700 leading-normal px-6 hover:block'>
-              Abhay Kumar Bharti is the Co-Founder of Opebo Industries Lmt. and
-              is responsible for handling the technical and services related
-              work in the company and bringing in investors for the company.
-            </p>
-          </div>
-          <div className='m-2 w-full sm:w-1/2 md:w-1/3 flex flex-col items-center justify-center h-48 md:h-64 p-8 hover:shadow-md border border-transparent hover:border-purple-500 bg-white hover:transform-scale-subtle transition-normal hover:show-child'>
-            <h3 className='mt-4 mb-1 text-lg font-bold'>
               Ramkrishna Kumar &#128526;
             </h3>
             <p className='mt-4 text-center text-gray-700 leading-normal px-6 hover:block'>
-              Ramkrishna Kumar is responsible for marketing and product growth
-              at Opebo. When not busy at work, Ramkrishna Kumar enjoys immersing
-              himself in interesting experiences be it socializing and
-              travelling
+              Ramkrishna Kumar is the Director of Opebo Industries Lmt. When not
+              busy at work, Ramkrishna Kumar enjoys immersing himself in
+              interesting experiences be it socializing and travelling
             </p>
           </div>
         </div>
