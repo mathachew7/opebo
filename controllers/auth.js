@@ -11,7 +11,6 @@ var nodemailer = require("nodemailer");
 const formidable = require("formidable");
 const _ = require("lodash");
 const fs = require("fs");
-const bcrypt = require("bcrypt");
 //otp generator
 var unirest = require("unirest");
 var request = unirest("POST", "https://www.fast2sms.com/dev/bulk");
