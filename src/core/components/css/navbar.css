@@ -1,0 +1,15 @@
+#menu-toggle:checked + #menu {
+  display: block;
+}
+
+#menu a {
+  color: black;
+}
+
+#menu a:hover {
+  color: orangered;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
