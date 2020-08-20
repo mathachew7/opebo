@@ -11,15 +11,22 @@ dist
 /coverage
 
 # production
-build
 /public
+public
 /src
+src
 .babelrc
+/.babelrc
 config-overrides.js
+/config-overrides.js
 package.json
+/package.json
 package-lock.json
+/package-lock.json
 postcss.config.js
+/postcss.config.js
 tailwind.js
+/tailwind.js
 
 # misc
 .DS_Store
