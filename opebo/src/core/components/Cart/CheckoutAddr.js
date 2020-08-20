@@ -115,7 +115,7 @@ const CheckoutAddr = ({ subServices, finalAddress }) => {
 
       setData({ ...data, error: false, loading: true });
       const options = {
-        key: "rzp_test_9vbBlpgYxp2OO8",
+        key: "rzp_live_CmhsHSSimzeg8H",
         amount: data.totalWithTax * 100,
         name: data.address.name,
         currency: "INR",

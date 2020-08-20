@@ -87,8 +87,7 @@ exports.contactUsValidator = (req, res, next) => {
       min: 4,
       max: 32,
     });
-
-  req.check("message", "Message is required").isLength({
+  req.check("message", "Message is required!!").isLength({
     min: 20,
     max: 500,
   });
