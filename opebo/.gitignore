@@ -12,6 +12,14 @@ dist
 
 # production
 /build
+/public
+/src
+.babelrc
+config-overrides.js
+package.json
+package-lock.json
+postcss.config.js
+tailwind.js
 
 # misc
 .DS_Store
