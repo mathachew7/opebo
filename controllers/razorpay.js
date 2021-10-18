@@ -3,8 +3,8 @@ var Razorpay = require("razorpay");
 require("dotenv").config();
 
 var instance = new Razorpay({
-  key_id: process.env.KEY_ID,
-  key_secret: process.env.KEY_SECRET,
+  key_id: process.env.KEY_ID_TEST,
+  key_secret: process.env.KEY_SECRET_TEST,
 });
 
 exports.createPayment = (req, res) => {

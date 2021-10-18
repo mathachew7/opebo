@@ -19,6 +19,8 @@ const contactUsRoutes = require("./routes/contactUs");
 const paymentRoutes = require("./routes/razorpay");
 
 const path = require("path");
+
+require('dotenv').config();
 //app
 const app = express();
 

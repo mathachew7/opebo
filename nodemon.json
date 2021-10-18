@@ -1,6 +1,6 @@
 {
   "env": {
-    "MONGODB_URI": "mongodb+srv://john:itSla9xGijLC7MPu@cluster0-hmzw2.mongodb.net/test1?retryWrites=true&w=majority",
+    "MONGODB_URI": "mongodb+srv://math:math@mathachew7.1vhqm.mongodb.net/Opebo?retryWrites=true&w=majority",
     "PORT": 8000,
     "SERVER_URI": "http://192.168.1.8:",
     "JWT_SECRET": "thisisopebosecretkey",
